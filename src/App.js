@@ -1,18 +1,13 @@
 import React from 'react';
-import Header from './components/Header';
-import FrontPage from './components/FrontPage';
-import Menu from './components/Menu';
-import Content from './components/Content';
-import Footer from './components/Footer';
+import FrontPage from './components/frontpage/frontPage';
+
 
 function App() {
   return (
-    <div>
-      <Header />
+    <div className='app'>
+
       <FrontPage />
-      <Menu />
-      <Content />
-      <Footer />
+
     </div>
   );
 }

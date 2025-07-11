@@ -1,7 +1,7 @@
 import React from "react";
 import $ from "jquery";
-import { usePageTransition } from "../hooks/usePageTransition";
-
+import {usePageTransition} from "../../hooks/usePageTransition";
+import "./frontPage.css"; // Ensure this path is correct
 const FrontPage = () => {
   usePageTransition();
 
@@ -111,7 +111,7 @@ const FrontPage = () => {
   return (
     <div id="frontpage" onClick={hideFront}>
       <div className="shadow-img"></div>
-      <img src="images/front-image.jpg" className="front-img img-responsive" alt="Front-image" />
+      <img src={process.env.PUBLIC_URL + "/front-image.jpg"} className="front-img img-responsive" alt="Front-image" />
       <h1>
         Yuqi <span className="invert">Sui</span>
       </h1>
@@ -119,7 +119,7 @@ const FrontPage = () => {
         Web/UI <span className="rotate">Developer, Designer</span>
       </h3>
       <div className="frontclick">
-        <img src="images/click.png" alt="" className="img-responsive" />
+        <img src={process.env.PUBLIC_URL + "/click.png"} alt="" className="img-responsive" />
         <span className="pulse"></span>
       </div>
     </div>
