@@ -1,18 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
+import AboutMe from "../about-me/aboutMe";
+import Resume from "../resume/resume";
+import Portfolio from "../portfolio/portfolio";
 
-const Header = () => (
-  <head>
-    <title>:: Yuqi Portfolio :</title>
-    <meta charSet="utf-8" />
-    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="shortcut icon" href="images/favicon.png" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-    <link rel="icon" type="image/x-icon" href="icon.ico" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700%7cOswald:400,700" rel="stylesheet" />
-  </head>
-);
 
-export default Header;
+const Home = () => {
+  const [activePage, setActivePage] = useState("home"); 
+
+  const handleMenuClick = (page) => {
+    setActivePage(page); // 更新当前显示的页面
+  };
+
+  return (
+    <div className="container">
+      <div id="content" className="row">
+        <div className="col-sm-4">
+          {/* Namecard */}
+          <div id="namecard" className="namecard">
+            <div className="shadow-img"></div>
+            <h1 className="maintitle">Yuqi <span className="invert"></span></h1>
+            <h3 className="invert sub-maintitle">Web/UI <span className="rotate">Developer, Designer</span></h3>
+            <img id="profile-img" className="profile-img transparent" src={process.env.PUBLIC_URL + "/images/myPhoto.png"} alt="profile-image" />
+          </div>
+          {/* Menu */}
+          <div id="menu-container">
+            <ul className="nav-menu no-padding">
+              <li className={`nav-btn ${activePage === "home" ? "selected" : ""}`} onClick={() => handleMenuClick("home")}>
+                <div className="hover-background"></div>
+                <span>About Me</span><i className="fa fa-user fa-fw"></i>
+              </li>
+              <li className={`nav-btn ${activePage === "resume" ? "selected" : ""}`} onClick={() => handleMenuClick("resume")}>
+                <div className="hover-background"></div>
+                <span>Resume</span><i className="fa fa-file-text fa-fw"></i>
+              </li>
+              <li className={`nav-btn ${activePage === "portfolio" ? "selected" : ""}`} onClick={() => handleMenuClick("portfolio")}>
+                <div className="hover-background"></div>
+                <span>Portfolio</span><i className="fa fa-suitcase fa-fw"></i>
+              </li>
+            </ul>
+            <div className="social-menu-container">
+              <ul className="social-menu no-padding">
+                <li><a target="_blank" href="https://github.com/sy7777"><i className="fa fa-github"></i></a></li>
+                <li><a target="_blank" href="https://www.linkedin.com/in/yuqisui"><i className="fa fa-linkedin"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div className="col-sm-8 page-segment">
+          <ul className="page-container no-padding">
+            {activePage === "home" && <AboutMe />}
+            {activePage === "resume" && <Resume />}
+            {activePage === "portfolio" && <Portfolio />}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Home;

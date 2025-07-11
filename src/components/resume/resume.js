@@ -1,10 +1,17 @@
+import React from "react";
 
-const Resume = () => (
-  <div className="container">
-    <div id="Resume" className="row hidden">
-      {/* 这里可以继续拆分子组件，例如 NameCard, Resume, Portfolio 等 */}
-    </div>
-  </div>
-);
+const Resume = () => {
+  return (
+    <li id="portfolio" className="selected">
+      <div className="title-container">
+        <div className="shadow-img"></div>
+        <h2 className="rotate-out">Resume</h2>
+      </div>
+      <div className="description">
+        <p>Portfolio content goes here...</p>
+      </div>
+    </li>
+  );
+};
 
 export default Resume;
