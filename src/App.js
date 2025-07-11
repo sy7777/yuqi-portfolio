@@ -50,9 +50,13 @@ import "./App.css";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("front");
+  const [animationComplete, setAnimationComplete] = useState(false);
 
   const hideFront = () => {
-    setCurrentPage("home");
+    setAnimationComplete(true); // 开始动画
+    setTimeout(() => {
+      setCurrentPage("home"); // 动画结束后切换到 Home 页面
+    }, 1000); // 动画持续时间
   };
 
   return (
@@ -61,7 +65,7 @@ function App() {
       backgroundSize: 'cover',
       height: '100vh',
     }}>
-      {currentPage === "front" && <FrontPage onHideFront={hideFront} />}
+      {currentPage === "front" && <FrontPage onHideFront={hideFront} animationComplete={animationComplete} />}
       {currentPage === "home" && <Home />}
     </div>
   );

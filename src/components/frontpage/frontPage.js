@@ -141,18 +141,24 @@
 import React, { useState, useEffect } from "react";
 import "./frontPage.css";
 
-const FrontPage = ({ onHideFront }) => {
+const FrontPage = ({ onHideFront, animationComplete }) => {
   const [textIndex, setTextIndex] = useState(0);
   const rotatingTexts = ["Frontend Developer", "Designer"];
+
   useEffect(() => {
     const interval = setInterval(() => {
       setTextIndex((prevIndex) => (prevIndex + 1) % rotatingTexts.length);
     }, 1000); // Change text every 2 seconds
 
     return () => clearInterval(interval); // Cleanup on unmount
-  });
+  }, []);
+
   return (
-    <div id="frontpage" onClick={onHideFront}>
+    <div
+      id="frontpage"
+      className={`frontpage ${animationComplete ? "animate-hide" : ""}`}
+      onClick={onHideFront}
+    >
       <div className="shadow-img"></div>
       <img src={process.env.PUBLIC_URL + "/front-image.jpg"} className="front-img img-responsive" alt="Front-image" />
       <h1>
