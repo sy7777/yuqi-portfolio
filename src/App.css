@@ -510,22 +510,20 @@ ul.nav-menu li {
 	top: 200%;
 	left: -100%;
 	-ms-transform: rotate(15deg);
-	/* IE 9 */
 	-webkit-transform: rotate(15deg);
-	/* Safari */
 	-moz-transform: rotate(15deg);
-	/* Safari */
 	transform: rotate(15deg);
 	-webkit-transition: top 0.5s, left 0.5s;
-	/* Safari */
 	-moz-transition: top 0.5s, left 0.5s;
-	/* Safari */
 	-o-transition: top 0.5s, left 0.5s;
-	/* Safari */
 	transition-timing-function: ease-out;
 	transition: top 0.5s, left 0.5s;
 }
-
+.nav-btn > span,
+.nav-btn > i {
+  position: relative;
+  z-index: 1;
+}
 ul.nav-menu li:hover {
 	border-bottom-color: #111111;
 	color: rgb(181, 218, 193);
@@ -535,6 +533,7 @@ ul.nav-menu li:hover .hover-background,
 ul.nav-menu li.selected .hover-background {
 	top: 0%;
 	left: -15%;
+	z-index: 0;
 }
 
 ul.nav-menu li.selected {
@@ -728,8 +727,8 @@ h1.maintitle {
 }
 
 .personal-info-title {
-	font-size: 22.5px;
-	margin-top: 65px;
+	/* font-size: 22.5px;
+	margin-top: 65px; */
 }
 
 .personal-info {

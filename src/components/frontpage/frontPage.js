@@ -148,7 +148,7 @@ const FrontPage = ({ onHideFront, animationComplete }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setTextIndex((prevIndex) => (prevIndex + 1) % rotatingTexts.length);
-    }, 1000); // Change text every 2 seconds
+    }, 1000); 
 
     return () => clearInterval(interval); // Cleanup on unmount
   }, []);
@@ -165,7 +165,7 @@ const FrontPage = ({ onHideFront, animationComplete }) => {
         Yuqi <span className="invert">Sui</span>
       </h1>
       <h3 className="invert" style={{ marginTop: "-10px", marginBottom: "10px" }}>
-        Web/UI <span className="rotate">{rotatingTexts[textIndex]}</span>
+        Web <span className="rotate">{rotatingTexts[textIndex]}</span>
       </h3>
       <div className="frontclick">
         <img src={process.env.PUBLIC_URL + "/click.png"} alt="" className="img-responsive" />

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AboutMe from "../about-me/aboutMe";
 import Resume from "../resume/resume";
 import Portfolio from "../portfolio/portfolio";
-
+import "./home.css";
 
 const Home = () => {
   const [activePage, setActivePage] = useState("home"); 
