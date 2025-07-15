@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
+import "./portfolio.css";
 // 1. 数据结构
 const portfolioData = [
   {
@@ -35,38 +36,41 @@ const portfolioData = [
   }
 ];
 
-// 2. Modal 组件
+// 2. Modal
 function PortfolioModal({ item, onClose }) {
   if (!item) return null;
   return ReactDOM.createPortal(
-    <div className="modal fade show" style={{display: "block",}} tabIndex="-1" role="dialog" aria-modal="true">
-      <div className="modal-dialog">
-        <div className="modal-content">
-          <div className="modal-header">
-            <button type="button" className="close" onClick={onClose} aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <h4 className="modal-title">{item.maskTitle}</h4>
-          </div>
-          <div className="modal-body">
-            <img src={item.img} className="img-responsive" alt="modal-image" />
-          </div>
-          <div className="modal-footer">
-            <div className="mf-content">
-              <ul>
-                {item.desc.map((d, i) => <li key={i}>{d}</li>)}
-              </ul>
+    <>
+      {/* overlay */}
+      <div className="modal-backdrop fade show" onClick={onClose}></div>
+
+      {/* modal */}
+      <div className="modal" tabIndex="-1" role="dialog" aria-modal="true">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h4 className="modal-title">{item.maskTitle}</h4>
+              <button type="button" className="close" onClick={onClose} aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div className="modal-body">
+              <img src={item.img} className="img-responsive" alt="modal-image" />
+            </div>
+            <div className="modal-footer">
+              <div className="mf-content">
+                <ul>
+                  {item.desc.map((d, i) => <li key={i}>{d}</li>)}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      {/* 遮罩层，点击关闭 */}
-      <div className="modal-backdrop fade show" onClick={onClose} style={{
-       
-      }}></div>
-    </div>,
+    </>,
     document.body
   );
+
 }
 
 // 3. 主组件
@@ -82,27 +86,27 @@ const Portfolio = () => {
         </h2>
       </div>
       <div className="description">
-        <div className="portfolio-grid" style={{display: "flex", gap: "20px", flexWrap: "wrap"}}>
+        <div className="portfolio-grid" style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
           {portfolioData.map(item => (
             <div
               key={item.id}
               className="view view-first photography"
-              style={{width: "32.5%", height: "150px", position: "relative", cursor: "pointer"}}
+              style={{ width: "32.5%", height: "150px", position: "relative", cursor: "pointer" }}
             >
               <img
                 src={process.env.PUBLIC_URL + item.img}
                 alt={item.title}
-                style={{backgroundSize: "contain", margin: "0 auto", width: "100%", height: "100%"}}
+                style={{ backgroundSize: "contain", margin: "0 auto", width: "100%", height: "100%" }}
               />
               <div className="mask" style={{
                 position: "absolute", top: 0, left: 0, width: "100%", height: "100%",
                 background: "rgba(12,19,27,0.6)", opacity: 0, transition: "opacity 0.4s"
               }}>
-                <h2 style={{color: "#fff", marginTop: "30px"}}>{item.maskTitle}</h2>
+                <h2 style={{ color: "#fff", marginTop: "30px" }}>{item.maskTitle}</h2>
                 <a
                   role="button"
                   className="info"
-                  style={{display: "inline-block", marginTop: "10px", background: "#000", color: "#fff", padding: "7px 14px"}}
+                  style={{ display: "inline-block", marginTop: "10px", background: "#000", color: "#fff", padding: "7px 14px" }}
                   onClick={() => setModalItem(item)}
                 >
                   Read More
