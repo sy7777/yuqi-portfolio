@@ -43,29 +43,53 @@
 // export default App;
 
 
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FrontPage from "./components/frontpage/frontPage";
 import Home from "./components/home/home";
 import "./App.css";
 
 function App() {
+  const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState("front");
   const [animationComplete, setAnimationComplete] = useState(false);
 
+  useEffect(() => {
+    // Simulate loading (replace with real data loading if needed)
+    const timer = setTimeout(() => setLoading(false), 1200);
+    return () => clearTimeout(timer);
+  }, []);
+
   const hideFront = () => {
-    setAnimationComplete(true); // 开始动画
+    setAnimationComplete(true);
     setTimeout(() => {
-      setCurrentPage("home"); // 动画结束后切换到 Home 页面
-    }, 1000); // 动画持续时间
+      setCurrentPage("home");
+    }, 100);
   };
 
+  if (loading) {
+    return (
+      <div className="loading-screen">
+        <img
+          src={process.env.PUBLIC_URL + "/Preloader_7.gif"}
+          alt="Loading..."
+          style={{ width: 80, height: 80 }}
+        />
+      </div>
+    );
+  }
+
   return (
-    <div className="app" style={{
-      backgroundImage: `url(${process.env.PUBLIC_URL + '/bg.png'})`,
-      backgroundSize: 'cover',
-      height: '100vh',
-    }}>
-      {currentPage === "front" && <FrontPage onHideFront={hideFront} animationComplete={animationComplete} />}
+    <div
+      className="app"
+      style={{
+        backgroundImage: `url(${process.env.PUBLIC_URL + "/bg.png"})`,
+        backgroundSize: "cover",
+        height: "100vh",
+      }}
+    >
+      {currentPage === "front" && (
+        <FrontPage onHideFront={hideFront} animationComplete={animationComplete} />
+      )}
       {currentPage === "home" && <Home />}
     </div>
   );
