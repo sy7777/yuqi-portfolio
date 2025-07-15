@@ -53,10 +53,10 @@ function App() {
   const [animationComplete, setAnimationComplete] = useState(false);
 
   const hideFront = () => {
-    setAnimationComplete(true); // 开始动画
+    setAnimationComplete(true);
     setTimeout(() => {
-      setCurrentPage("home"); // 动画结束后切换到 Home 页面
-    }, 1000); // 动画持续时间
+      setCurrentPage("home");
+    }, 1000);
   };
 
   return (

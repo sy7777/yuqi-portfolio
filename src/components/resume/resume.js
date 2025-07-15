@@ -1,251 +1,283 @@
-import React from "react";
+import React, { useState } from "react";
 import "./resume.css";
-const Resume = () => {
+
+// skills tab
+const skills = [
+  { name: "HTML/CSS", percent: 98 },
+  { name: "Javascript", percent: 85 },
+  { name: "Node.js", percent: 85 },
+  { name: "Vue/Vuex", percent: 80 },
+  { name: "React", percent: 65 },
+  { name: "Angular", percent: 70 },
+  { name: "php", percent: 70 },
+  { name: "CMS-Drupal", percent: 80 },
+];
+
+const otherSkills = [
+  { name: "Git/Git CLI", percent: 90 },
+  { name: "Sql", percent: 65 },
+  { name: "TypeScript", percent: 70 },
+  { name: "GraphQl", percent: 95 },
+  { name: "CI/CD", percent: 95 },
+];
+
+function ProgressCircle({ percent }) {
+  const radius = 46;
+  const circumference = 2 * Math.PI * radius;
+  const offset = circumference * (1 - percent / 100);
+
   return (
-    <li id="portfolio" className="selected">
+    <svg viewBox="0 0 100 100" style={{ display: "block", width: "100%" }}>
+      <path
+        d="M 50,50 m 0,-46 a 46,46 0 1 1 0,92 a 46,46 0 1 1 0,-92"
+        stroke="#e6f7ec"
+        strokeWidth="7"
+        fillOpacity="0"
+      />
+      <path
+        d="M 50,50 m 0,-46 a 46,46 0 1 1 0,92 a 46,46 0 1 1 0,-92"
+        stroke="#b5dac1"
+        strokeWidth="8"
+        fillOpacity="0"
+        strokeDasharray={circumference}
+        strokeDashoffset={offset}
+        style={{ transition: "stroke-dashoffset 1s" }}
+      />
+    </svg>
+  );
+}
+function SkillsList() {
+  return (
+    <ul className="skills-list no-padding">
+      {skills.map((skill, idx) => (
+        <li className="row" key={skill.name}>
+          <div className="col-xs-3">
+            <div className="fw-mid">{skill.name}</div>
+          </div>
+          <div className="col-xs-8">
+            <div className="bar">
+              <div
+                className="percentage"
+                id={`bar${idx + 1}`}
+                style={{ width: `${skill.percent}%` }}
+              ></div>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function OtherSkillsCircles() {
+  return (
+    <div className="circle-skill-container">
+      <h3 className="title">OTHER SKILLS</h3>
+      <div className="row">
+        {otherSkills.map((skill, idx) => (
+          <div className="col-xs-4 center-align" key={skill.name}>
+            <div className="circle-bar" id={`line-container${idx + 1}`}>
+              <div className="progressbar-text" id={`progress-text${idx + 1}`}>
+                {skill.percent}%
+              </div>
+              <ProgressCircle percent={skill.percent} />
+            </div>
+            <h5>{skill.name}</h5>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// education tab
+const educationList = [
+  {
+    school: "Queensland University of Technology",
+    degree: "Master of TESOL",
+    year: "(2021.3 - Now)",
+    content: "Being a web developer volunteer at LBL Charity at the same time."
+  },
+  {
+    school: "The University of Queensland",
+    degree: "Master of IT",
+    year: "(2017.2 - 2018.11)",
+    content: "HTML, CSS, JavaScript, SQL, Web Design, Node.js"
+  },
+  {
+    school: "Sichuan Agricultural University",
+    degree: "Bachelor of Agribusiness",
+    year: "(2012 - 2016)",
+    content: "GPA 3.35/4"
+  }
+];
+
+function EducationList() {
+  const [openedIndex, setOpenedIndex] = useState(null);
+  const toggleContent = (index) => {
+    setOpenedIndex(openedIndex === index ? null : index);
+  }
+  return (
+    <ul className="education-class">
+      {educationList.map((edu, index) => (
+        <li key={edu.school} className={openedIndex === index ? "current" : ""}>
+          <h4 className="title" onClick={() => toggleContent(index)}>
+            {edu.school} <i className="fa fa-sort-desc pull-right"></i>
+          </h4>
+          {openedIndex === index && (
+            console.log(openedIndex, index),
+            <div className="list-content">
+              <h5 className="title">
+                {edu.degree} <span className="list-year">{edu.year}</span>
+              </h5>
+              <p>{edu.content}</p>
+            </div>
+          )}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+// tab data
+const tabData = [
+  {
+    id: "tab-skills",
+    label: "Skills",
+    icon: "icon-skills",
+    bg: `/resume/icon_01.png`,
+    content: (
+      <div>
+        <h3 className="title">MY SKILLS</h3>
+        <SkillsList />
+        <OtherSkillsCircles />
+      </div>
+    )
+  },
+  {
+    id: "tab-employment",
+    label: "Employment",
+    icon: "icon-employment",
+    bg: `/resume/icon_03.png`,
+    content: (
+      <div>
+        <h3 className="title">EMPLOYMENT</h3>
+        <ul className="employment-class tab-cont">
+          <li>
+            <h4>
+              Web Developer <span className="year">2022.05 - Now</span>
+            </h4>
+            <h5>Axis Tech</h5>
+            <p>
+              Build Soil Data Broker Program website to collect data for WA government
+              using Vue, JavaScript, TypeScript, HTML, CSS, Laravel, Azure DevOps and
+              serverless function.
+            </p>
+            <p>
+              Build online Form Creator (Kind of like a low-code development platform)
+              using Vue, Bootstrap, Vuex, Cloudflare, CI/CD，Graphql, TypeOrm.
+            </p>
+          </li>
+          <li>
+            <h4>
+              Developer Programmer<span className="year">2021.11 – 2022.04</span>
+            </h4>
+            <h5>Parallel Data Research</h5>
+            <p>Front-end work of the McDonald's website</p>
+            <p>Maintain the website for daily requirement</p>
+            <p>Maintain Azure database and server.</p>
+          </li>
+          <li>
+            <h4>
+              Web Developer Intern <span className="year">2021.09 - 2021.10</span>
+            </h4>
+            <h5>ACESO</h5>
+            <p>Angular, Putty, Node.Js, Database, Core UI, Git, </p>
+            <p>Build a management system for pharmacy sales.</p>
+          </li>
+        </ul>
+      </div>
+    )
+  },
+  {
+    id: "tab-education",
+    label: "Educations",
+    icon: "icon-education",
+    bg: `/resume/icon_02.png`,
+    content: (
+      <div>
+        <h3 className="title">EDUCATIONS</h3>
+        <EducationList />
+      </div>
+    )
+  },
+
+]
+const Resume = () => {
+  const [activeTab, setActiveTab] = useState("tab-skills");
+  return (
+    // <li id="resume" className="selected">
+    //   <div className="title-container">
+    //     <div className="shadow-img"></div>
+    //     <h2 className="rotate-out rotated">
+    //       <span className="invert">Resume Of</span> Yuqi Sui
+    //     </h2>
+    //   </div>
+    //   <div className="description">
+    //     <div className="tabs tabs_animate">
+    //       {/* TAB LISTS */}
+    //       <ul className="horizontal no-padding">
+    //         {tabData.map((tab) => (
+    //           <li key={tab.id} className={`${activeTab === tab.id ? "active" : ""}`}>
+    //             <a
+    //               className={`icon-bg ${tab.icon}`}
+    //               onClick={() => setActiveTab(tab.id)}
+    //               style={{
+    //                 backgroundImage: `url(${process.env.PUBLIC_URL + tab.bg})`,
+    //               }}
+    //             >
+    //               <div>{tab.label}</div>
+    //             </a>
+    //           </li>
+    //         ))}
+    //       </ul>
+
+    //     </div>
+    //               {/* TAB CONTENT */}
+    //       <div>
+    //         {tabData.map(
+    //           (tab) =>
+    //             activeTab === tab.id && (
+    //               <div key={tab.id} id={tab.id}>
+    //                 {tab.content}
+    //               </div>
+    //             )
+    //         )}
+    //       </div>
+    //   </div>
+    // </li>
+    <li id="resume" className="selected">
       <div className="title-container">
         <div className="shadow-img"></div>
-        <h2 className="rotate-out rotated"><span class="invert">Resume Of</span> Yuqi Sui</h2>
+        <h2 className="rotate-out">Welcome To <span className="invert">My Profile</span></h2>
       </div>
       <div className="description">
-        <div className="tabs tabs_animate">
-          {/* RESUME TAB LISTS */}
-          <ul className="horizontal no-padding">
-            <li>
-              <a href="#tab-1" className="icon-bg icon-skills">
-                <div>Skills</div>
-              </a>
-            </li>
-            <li>
-              <a href="#tab-2" className="icon-bg icon-education">
-                <div>Educations</div>
-              </a>
-            </li>
-            <li>
-              <a href="#tab-3" className="icon-bg icon-employment">
-                <div>Employment</div>
-              </a>
-            </li>
-          </ul>
-          {/* RESUME TAB LISTS ENDS */}
-
-          {/* RESUME FIRST TAB/SKILL TAB DETAILS */}
-          <div id="tab-1">
-            <h3 className="title">MY SKILLS</h3>
-            {/* SKILLS WITH BAR DISPLAY */}
-            <ul className="skills-list no-padding">
-              <li className="row">
-                <div className="col-xs-2">
-                  <div className="fw-mid">HTML</div>
-                </div>
-                <div className="col-xs-9">
-                  <div className="bar">
-                    <div className="percentage" id="bar1" style={{ width: "88%" }}></div>
-                  </div>
-                </div>
-              </li>
-              <li className="row">
-                <div className="col-xs-2">
-                  <div className="fw-mid">CSS</div>
-                </div>
-                <div className="col-xs-9">
-                  <div className="bar">
-                    <div className="percentage" id="bar2" style={{ width: "80%" }}></div>
-                  </div>
-                </div>
-              </li>
-              <li className="row">
-                <div className="col-xs-2">
-                  <div className="fw-mid">Javascript</div>
-                </div>
-                <div className="col-xs-9">
-                  <div className="bar">
-                    <div className="percentage" id="bar3" style={{ width: "75%" }}></div>
-                  </div>
-                </div>
-              </li>
-              <li className="row">
-                <div className="col-xs-2">
-                  <div className="fw-mid">Vue.Js</div>
-                </div>
-                <div className="col-xs-9">
-                  <div className="bar">
-                    <div className="percentage" id="bar4" style={{ width: "78%" }}></div>
-                  </div>
-                </div>
-              </li>
-              <li className="row">
-                <div className="col-xs-2">
-                  <div className="fw-mid">Node.js</div>
-                </div>
-                <div className="col-xs-9">
-                  <div className="bar">
-                    <div className="percentage" id="bar5" style={{ width: "65%" }}></div>
-                  </div>
-                </div>
-              </li>
-              <li className="row">
-                <div className="col-xs-2">
-                  <div className="fw-mid">Photoshop</div>
-                </div>
-                <div className="col-xs-9">
-                  <div className="bar">
-                    <div className="percentage" id="bar6" style={{ width: "80%" }}></div>
-                  </div>
-                </div>
-              </li>
-            </ul>
-            {/* SKILLS WITH BAR DISPLAY ENDS */}
-
-            {/* SKILLS WITH CIRCLE DISPLAY */}
-            <div className="circle-skill-container">
-              <h3 className="title">OTHER SKILLS</h3>
-              <div className="row">
-                <div className="col-xs-4 center-align">
-                  <div className="circle-bar" id="line-container1">
-                    <div className="progressbar-text" id="progress-text1">80</div>
-                  </div>
-                  <h5>WordPress</h5>
-                </div>
-                <div className="col-xs-4 center-align">
-                  <div className="circle-bar" id="line-container2">
-                    <div className="progressbar-text" id="progress-text2">70</div>
-                  </div>
-                  <h5>Git/Git CLI</h5>
-                </div>
-                <div className="col-xs-4 center-align">
-                  <div className="circle-bar" id="line-container3">
-                    <div className="progressbar-text" id="progress-text3">60</div>
-                  </div>
-                  <h5>Sql</h5>
-                </div>
-                <div className="col-xs-4 center-align">
-                  <div className="circle-bar" id="line-container4">
-                    <div className="progressbar-text" id="progress-text4">80</div>
-                  </div>
-                  <h5>TypeScript</h5>
-                </div>
-                <div className="col-xs-4 center-align">
-                  <div className="circle-bar" id="line-container5">
-                    <div className="progressbar-text" id="progress-text5">90</div>
-                  </div>
-                  <h5>GraphQl</h5>
-                </div>
-                <div className="col-xs-4 center-align">
-                  <div className="circle-bar" id="line-container6">
-                    <div className="progressbar-text" id="progress-text6">80</div>
-                  </div>
-                  <h5>CI/CD</h5>
-                </div>
-              </div>
-            </div>
-            {/* SKILLS WITH CIRCLE DISPLAY ENDS */}
-          </div>
-          {/* RESUME FIRST TAB/SKILL TAB DETAILS ENDS */}
-
-          {/* RESUME SECOND TAB/EDUCATION TAB DETAILS */}
-          <div id="tab-2">
-            <h3 className="title">EDUCATIONS</h3>
-            <ul className="education-class">
-              <li>
-                <h4 className="title">
-                  Queensland University of Technology
-                  <i className="fa fa-sort-desc pull-right"></i>
-                </h4>
-                <div className="list-content current">
-                  <h5 className="title">
-                    Master of TESOL
-                    <span className="list-year">(2021.3 - Now)</span>
-                  </h5>
-                  <p>
-                    Being a web developer volunteer at LBL Charity at the same time.
-                  </p>
-                </div>
-              </li>
-              <li>
-                <h4 className="title">
-                  The University of Queensland
-                  <i className="fa fa-sort-desc pull-right"></i>
-                </h4>
-                <div className="list-content current">
-                  <h5 className="title">
-                    Master of IT
-                    <span className="list-year">(2017.2 - 2018.11)</span>
-                  </h5>
-                  <p>HTML, CSS, JavaScript, SQL, Web Design, Node.js</p>
-                </div>
-              </li>
-              <li>
-                <h4 className="title">
-                  SIIT Institution
-                  <i className="fa fa-sort-desc pull-right"></i>
-                </h4>
-                <div className="list-content">
-                  <h5 className="title">
-                    Naati Certification
-                    <span className="list-year">(2017 - 2018)</span>
-                  </h5>
-                  <p>The certification of translator from English to Mandarin</p>
-                </div>
-              </li>
-              <li>
-                <h4 className="title">
-                  Sichuan Agricultural University
-                  <i className="fa fa-sort-desc pull-right"></i>
-                </h4>
-                <div className="list-content">
-                  <h5 className="title">
-                    Bachelor of Agribusiness
-                    <span className="list-year">(2012 - 2016)</span>
-                  </h5>
-                  <p>GPA 3.35/4</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-          {/* RESUME SECOND TAB/EDUCATION TAB DETAILS ENDS */}
-
-          {/* RESUME THIRD TAB/EMPLOYMENT TAB DETAILS */}
-          <div id="tab-3">
-            <h3 className="title">EMPLOYMENT</h3>
-            <ul className="employment-class tab-cont">
-              <li>
-                <h4>
-                  Web Developer <span className="year">2022.05 - Now</span>
-                </h4>
-                <h5>Axis Tech</h5>
-                <p>
-                  Build Soil Data Broker Program website to collect data for WA government
-                  using Vue, JavaScript, TypeScript, HTML, CSS, Laravel, Azure DevOps and
-                  serverless function.
-                </p>
-                <p>
-                  Build online Form Creator (Kind of like a low-code development platform)
-                  using Vue, Bootstrap, Vuex, Cloudflare, CI/CD，Graphql, TypeOrm.
-                </p>
-              </li>
-              <li>
-                <h4>
-                  Developer Programmer<span className="year">2021.11 – 2022.04</span>
-                </h4>
-                <h5>Parallel Data Research</h5>
-                <p>Front-end work of the McDonald's website</p>
-                <p>Maintain the website for daily requirement</p>
-                <p>Maintain Azure database and server.</p>
-              </li>
-              <li>
-                <h4>
-                  Web Developer Intern <span className="year">2021.09 - 2021.10</span>
-                </h4>
-                <h5>ACESO</h5>
-                <p>Angular, Putty, Node.Js, Database, Core UI, Git, </p>
-                <p>Build a management system for pharmacy sales.</p>
-              </li>
-            </ul>
-          </div>
+        <div className="fade-text">
+          <div className="strong-text">Hello, I am <span>Yuqi</span></div>
+          <div className="focus-text"><span>Web Developer & </span><span>Web Designer</span></div>
+          <p className="large-paragraph">Frontend Developer with hands-on experience building scalable web platforms and custom CMS templates. Experienced in JavaScript, Angular, Vue, React, HTML, CSS, PHP, and Drupal. Passionate about improving user experience, building internal tools to support content teams, and collaborating cross-functionally across product and engineering.</p>
         </div>
+        <h3 className="personal-info-title title">Personal Info</h3>
+							<ul className="personal-info">
+								<li className=""><label>Name:</label><span>Yuqi Sui</span></li>
+								<li className=""><label>Address:</label><span>Perth (Happy to
+										relocate)</span></li>
+								<li className="">
+									<label>Email:</label><span id="my-email">yuqi.sui77@gmail.com</span>
+								</li>
+								<li className=""><label>Phone:</label><span>+61 415 590 320</span></li>
+							</ul>
       </div>
-
     </li>
   );
 };

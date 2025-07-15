@@ -8,7 +8,7 @@ const Home = () => {
   const [activePage, setActivePage] = useState("home"); 
 
   const handleMenuClick = (page) => {
-    setActivePage(page); // 更新当前显示的页面
+    setActivePage(page);
   };
 
   return (
@@ -20,7 +20,7 @@ const Home = () => {
             <div className="shadow-img"></div>
             <h1 className="maintitle">Yuqi <span className="invert"></span></h1>
             <h3 className="invert sub-maintitle">Web/UI <span className="rotate">Developer, Designer</span></h3>
-            <img id="profile-img" className="profile-img transparent" src={process.env.PUBLIC_URL + "/images/myPhoto.png"} alt="profile-image" />
+            <img id="profile-img" className="profile-img transparent" src={process.env.PUBLIC_URL + "/myPhoto.png"} alt="profile-image" />
           </div>
           {/* Menu */}
           <div id="menu-container">
@@ -47,11 +47,11 @@ const Home = () => {
           </div>
         </div>
         <div className="col-sm-8 page-segment">
-          <ul className="page-container no-padding">
+          <div className="page-container no-padding">
             {activePage === "home" && <AboutMe />}
             {activePage === "resume" && <Resume />}
             {activePage === "portfolio" && <Portfolio />}
-          </ul>
+          </div>
         </div>
       </div>
     </div>

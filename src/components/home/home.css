@@ -1,0 +1,76 @@
+#home{
+	margin-left: 20px;
+	height: 100%;
+}
+
+/*-------------------------------------------------------*/
+/* Description Design Section */
+/*-------------------------------------------------------*/
+.description {
+	height: 77%;
+	position: relative;
+	background-color: #fff;
+	padding: 15px 30px;
+	overflow: auto;
+	/* min-height: 512px; */
+}
+
+.description p {
+	/* margin: 15px 0px; */
+	/* padding-right: 75px; */
+}
+
+.strong-text {
+	font-family: "Oswald", sans-serif;
+	display: inline-block;
+	font-size: 22.5px;
+	margin: 10px 0px;
+}
+
+.strong-text span {
+	background: rgb(181, 218, 193);
+	padding: 2px 5px;
+	padding-bottom: 2px;
+	color: #111;
+	margin-left: 5px;
+}
+
+.fade-text {
+	opacity: 1;
+	/* Modern!Firefox 0.9+, Safari 2?, Chrome any?Opera 9+, IE 9+ */
+	-khtml-opacity: 1;
+	-moz-opacity: 1;
+	/* Older than Firefox 0.9 */
+	filter: alpha(opacity=100);
+	/* This works in IE 8 & 9 too, but also 5, 6, 7 */
+	transition: opacity 0.75s ease-in;
+	-moz-transition: opacity 0.75s ease-in;
+	-webkit-transition: opacity 0.75s ease-in;
+}
+
+.rotate-out {
+	-webkit-transform: rotateX(0deg);
+	/* Safari */
+	transform: rotateX(0deg);
+
+	transition: all 0.5s ease-in;
+	-moz-transition: all 0.5s ease-in;
+	-webkit-transition: all 0.5s ease-in;
+}
+
+.rotated {
+	-webkit-transform: rotateX(-90deg);
+	/* Safari */
+	transform: rotateX(-90deg);
+}
+
+.focus-text span {
+	font-size: 16px;
+	font-weight: 600;
+}
+.page-container{
+	height: 100%;
+}
+.page-container .selected {
+	display: block;
+}
