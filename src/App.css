@@ -29,6 +29,9 @@ body {
 	display: flex;
 	align-items: center;
 }
+.container-padding{
+	padding: 15px 30px;;
+}
 #frontpage {
 	position: absolute;
 	top: 50%;
@@ -623,11 +626,8 @@ ul.nav-menu li.selected span {
 	padding: 15px;
 	padding-left: 25px;
 	z-index: 100;
-}
-
-.title-container h2 {
-	bottom: 15px;
-	position: absolute;
+	display: flex;
+	align-items: center;
 }
 
 .sm-title {
@@ -650,7 +650,7 @@ h1.maintitle {
 	position: relative;
 	background-color: #fff;
 	padding: 15px 30px;
-	overflow: hidden;
+	overflow: auto;
 }
 
 .description p {
@@ -775,226 +775,7 @@ ul.personal-info li {
 /* Resume styles	 */
 /*-------------------------------------------------------*/
 
-.tabs {
-	position: relative;
-	height: 100%;
-	overflow-y: scroll;
-	/* background: #000; */
-	margin: 7px -10px;
-	/* padding-bottom: 40px;  */
-}
 
-.tabs .horizontal {
-	margin: 30px -30px;
-	margin-top: 0px;
-	padding: 16px 0px;
-	display: block;
-	min-height: 50px;
-	position: relative;
-	top: -30px;
-}
-
-.tabs .horizontal li a {
-	width: 33.3%;
-	border-right: 3px solid #ffffff;
-	margin: 0px;
-	padding: 24px 0px 19px;
-	float: left;
-	text-align: center;
-	background-color: #111111;
-	color: rgb(181, 218, 193);
-	transition: background-color 0.3s ease-in;
-	-webkit-transition: background-color 0.3s ease-in;
-	font-size: 16px;
-	font-family: Oswald;
-}
-
-.tabs .horizontal li:last-child a {
-	border-right: none;
-}
-
-.icon-bg {
-	/* background-image: url('/yuqi-portfolio/resume/skills.png'); */
-	background-position: left;
-	-webkit-background-size: contain;
-	background-size: contain;
-	background-repeat: no-repeat;
-}
-
-.icon-skills {
-	/* background-image: url('/yuqi-portfolio/resume/icon_01.png'); */
-}
-
-.icon-education {
-	/* background-image: url('/yuqi-portfolio/resume/icon_02.png'); */
-}
-
-.icon-employment {
-	/* background-image: url('/yuqi-portfolio/resume/icon_03.png'); */
-}
-
-.tabs .horizontal li a:hover,
-.tabs .horizontal li.active a {
-	background-color: rgb(181, 218, 193);
-	text-decoration: none;
-	color: #111111;
-}
-
-.tab-cont {
-	position: relative;
-	height: 300px;
-	overflow-y: scroll;
-}
-
-.tab-cont .row {
-	margin-left: 0px;
-	margin-right: 0px;
-}
-
-.employment-class,
-.education-class {
-	list-style: none;
-	padding-left: 0px;
-}
-
-.employment-class li {
-	position: relative;
-	margin-bottom: 15px;
-	background-color: #111111;
-	padding: 15px;
-	color: #f7efe2;
-}
-
-.employment-class li h4 {
-	color: #f7efe2;
-	font-size: 13px;
-	font-weight: 400;
-	margin-top: 5px;
-	margin-bottom: 5px;
-}
-
-.employment-class li h5 {
-	color: rgb(181, 218, 193);
-	margin-top: 5px;
-	font-weight: bold;
-}
-
-.employment-class li p {
-	margin: 0 0 10px;
-	font-size: 12px;
-}
-
-.employment-class li:last-child:after {
-	display: none;
-}
-
-.education-class li>.title {
-	background-color: #111111;
-	padding: 10px;
-	font-size: 15px;
-	font-weight: 600;
-	color: rgb(181, 218, 193);
-	cursor: pointer;
-}
-
-.education-class>li.current>.title {
-	background-color: rgb(181, 218, 193);
-	color: #111111;
-}
-
-.education-class h4 i {
-	font-size: 16px;
-}
-
-.education-class h4 i.fa-sort-desc {
-	position: relative;
-	top: -5px;
-}
-
-.education-class .list-content {
-	color: #666;
-	padding: 0px 15px;
-	height: 0px;
-	-webkit-transition: height 0.5s;
-	/* Safari */
-	-moz-transition: height 0.5s;
-	/* Mozila */
-	-o-transition: height 0.5s;
-	/* Opera */
-	transition: height 0.5s;
-	overflow: hidden;
-}
-
-.list-content>.title {
-	font-weight: 700;
-}
-
-.list-year {
-	font-style: italic;
-	margin-left: 5px;
-}
-
-.education-class .current .list-content {
-	height: 110px;
-}
-
-.education-class .current i {
-	color: #111111;
-}
-
-/*skills*/
-.skills-list li {
-	margin-bottom: 10px;
-}
-
-.bar {
-	background: #e9f7ed;
-	padding-left: 0px;
-	height: 25px;
-	overflow: hidden;
-	width: 100%;
-	max-width: 350px;
-	position: relative;
-}
-
-.percentage {
-	width: 50%;
-	height: 100%;
-}
-
-.circle-skill-container {
-	max-width: 426px;
-	padding: 5px;
-	padding-left: 0;
-}
-
-.circle-skill-container h5 {
-	margin-top: 10px;
-	font-weight: 600;
-	text-transform: uppercase;
-}
-
-.circle-bar {
-	position: relative;
-	margin: 5px auto;
-}
-
-.circle-bar>svg {
-	height: 100%;
-	display: block;
-}
-
-.circle-bar .progressbar-text {
-	font-size: 12.5px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	padding: 0px;
-	margin: 0px;
-	-webkit-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
-	color: #111111;
-}
 
 /*-------------------------------------------------------*/
 /* Contact Page styles	 */

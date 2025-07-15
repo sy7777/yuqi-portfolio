@@ -1,10 +1,263 @@
 .rotate-out {
-  animation: rotateOutShow 1s forwards;
+	animation: rotateOutShow 1s forwards;
 }
+
 .rotated {
-  /* 可能是补充的样式 */
+	/* 可能是补充的样式 */
 }
+
 @keyframes rotateOutShow {
-  from { opacity: 0; transform: translateY(40px);}
-  to   { opacity: 1; transform: translateY(0);}
+	from {
+		opacity: 0;
+		transform: translateY(40px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.icon-skills {
+	/* background-image: url('/resume/icon_01.png'); */
+}
+
+.percentage {
+	transition: width 1s ease;
+	background-color: #b5dac1;
+}
+
+/*-------------------------------------------------------*/
+/* Resume styles	 */
+/*-------------------------------------------------------*/
+
+.tabs {
+	/* position: relative;
+	height: 100%;
+	overflow-y: scroll; */
+	/* background: #000; */
+	/* margin: 7px -10px; */
+	/* padding-bottom: 40px;  */
+
+}
+
+.description {
+	padding: 0 !important;
+	;
+}
+
+.tabs-list-container {
+	background-color: #111111;
+	position: sticky;
+	top: 0px;
+	z-index: 2;
+}
+
+.tabs .horizontal {
+	background-color: #fff;
+	height: 67px;
+	padding: 15px 30px;
+}
+
+#tab-employment,
+#tab-skills,
+#tab-education {
+	padding: 15px 30px;
+}
+
+.tabs .horizontal li a {
+	width: 33.3%;
+	border-right: 3px solid #ffffff;
+	margin: 0px;
+	padding: 15px 0px 10px;
+	float: left;
+	text-align: center;
+	background-color: #111111;
+	color: rgb(181, 218, 193);
+	transition: background-color 0.3s ease-in;
+	-webkit-transition: background-color 0.3s ease-in;
+	font-size: 16px;
+	font-family: 'Oswald';
+	cursor: pointer;
+}
+
+.tabs .horizontal li:last-child a {
+	border-right: none;
+}
+
+.icon-bg {
+	background-position: left;
+	-webkit-background-size: contain;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.tabs .horizontal li a:hover,
+.tabs .horizontal li.active a {
+	background-color: rgb(181, 218, 193);
+	text-decoration: none;
+	color: #111111;
+}
+
+.tab-cont {
+	/* position: relative; */
+	/* height: 300px; */
+	/* overflow-y: scroll; */
+}
+
+.tab-cont .row {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.employment-class,
+.education-class {
+	list-style: none;
+	padding-left: 0px;
+}
+
+.employment-class li {
+	position: relative;
+	margin-bottom: 15px;
+	background-color: #111111;
+	padding: 15px;
+	color: #f7efe2;
+}
+
+.employment-class li h4 {
+	color: #f7efe2;
+	font-size: 13px;
+	font-weight: 400;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.employment-class li h5 {
+	color: rgb(181, 218, 193);
+	margin-top: 5px;
+	font-weight: bold;
+}
+
+.employment-class li p {
+	margin: 0 0 10px;
+	font-size: 12px;
+}
+
+.employment-class li:last-child:after {
+	display: none;
+}
+
+.education-class li>.title {
+	background-color: #111111;
+	padding: 10px;
+	font-size: 15px;
+	font-weight: 600;
+	color: rgb(181, 218, 193);
+	cursor: pointer;
+	margin-bottom: 0;
+}
+
+.education-class li {
+	border: 1px solid #b5dac1;
+	border-top: none;
+
+}
+
+.education-class>li.current>.title {
+	background-color: rgb(181, 218, 193);
+	color: #111111;
+}
+
+.education-class h4 i {
+	font-size: 16px;
+}
+
+.education-class h4 i.fa-sort-desc {
+	position: relative;
+	top: -5px;
+}
+
+.education-class .list-content {
+	color: #000;
+	padding: 0px 15px;
+	/* height: 0px; */
+	-webkit-transition: height 0.5s;
+	/* Safari */
+	-moz-transition: height 0.5s;
+	/* Mozila */
+	-o-transition: height 0.5s;
+	/* Opera */
+	transition: height 0.5s;
+	overflow: hidden;
+}
+
+.list-content>.title {
+	font-weight: 700;
+}
+
+.list-year {
+	font-style: italic;
+	margin-left: 5px;
+}
+
+.education-class .current .list-content {
+	height: 110px;
+}
+
+.education-class .current i {
+	color: #111111;
+}
+
+/*skills*/
+.skills-list li {
+	margin-bottom: 10px;
+}
+
+.bar {
+	background: #e9f7ed;
+	padding-left: 0px;
+	height: 25px;
+	overflow: hidden;
+	width: 100%;
+	max-width: 350px;
+	position: relative;
+}
+
+.percentage {
+	width: 50%;
+	height: 100%;
+}
+
+.circle-skill-container {
+	max-width: 426px;
+	padding: 5px;
+	padding-left: 0;
+}
+
+.circle-skill-container h5 {
+	margin-top: 10px;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+.circle-bar {
+	position: relative;
+	margin: 5px auto;
+}
+
+.circle-bar>svg {
+	height: 100%;
+	display: block;
+}
+
+.circle-bar .progressbar-text {
+	font-size: 12.5px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	padding: 0px;
+	margin: 0px;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	color: #111111;
 }
