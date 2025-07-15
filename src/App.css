@@ -357,8 +357,30 @@ span.year {
 	box-shadow: none;
 	-webkit-box-shadow: none;
 }
+.modal {
+  position: fixed !important;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000 !important;
+}
+.modal-dialog {
+  margin: 0;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+.modal-backdrop {
+  position: fixed !important;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #000 !important;
+  opacity: 0.5 !important;
+  z-index: 1999 !important;
+}
 
-.modal-content {
+/* .modal-content {
 	border-radius: 3px;
 	border: 8px solid rgb(181, 218, 193);
 	box-shadow: 0 0px 7px rgb(0, 0, 0);
@@ -386,7 +408,7 @@ span.year {
 	font-size: 24px;
 	margin-bottom: -10px;
 	color: #fff;
-}
+} */
 
 .close {
 	color: #fff;

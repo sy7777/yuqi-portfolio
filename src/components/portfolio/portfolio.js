@@ -1,127 +1,126 @@
 import React, { useState } from "react";
-import "./portfolio.css";
-
-// Button filter data
-const filters = [
-  { label: "Graphic Designs", filter: "*", key: "graphic" },
-  { label: "Website Projects", filter: ".photography", key: "web" },
-  { label: "Download My Resume", filter: ".commercial", key: "resume" },
+import ReactDOM from "react-dom";
+// 1. 数据结构
+const portfolioData = [
+  {
+    id: "web7",
+    title: "Classical Snake Game",
+    img: "/folio/web7.png",
+    maskTitle: "Design Works",
+    desc: [
+      "Bring you to the childhood",
+      <span key="link">Link: <a target="_blank" rel="noopener noreferrer" href="https://yuqisui.bitbucket.io/Snake">Play</a></span>
+    ]
+  },
+  {
+    id: "web8",
+    title: "McDonald's Track Portal",
+    img: "/folio/web8.png",
+    maskTitle: "Design Works",
+    desc: [
+      "Web Design: HTML, CSS",
+      <span key="link">Link: <a target="_blank" rel="noopener noreferrer" href="https://madtrackportal.azurewebsites.net/">Link</a></span>
+    ]
+  },
+  {
+    id: "web9",
+    title: "LBL Charity",
+    img: "/folio/web9.png",
+    maskTitle: "Design Works",
+    desc: [
+      "Official website of LBL Charity",
+      "Made by Wordpress.",
+      <span key="link">Link: <a target="_blank" rel="noopener noreferrer" href="https://lblcharitablefoundation.org/">Address</a></span>
+    ]
+  }
 ];
 
-// Portfolio items data (add all your items here)
-const portfolioItems = [
-  {
-    id: "1",
-    img: "images/folio/4.jpg",
-    alt: "4",
-    title: "Design Work",
-    modal: "#myModa4",
-    type: "graphic",
-    style: { left: "0px", top: "0px" },
-    viewClass: "view view-first",
-  },
-  // ...add all other items, with type: "graphic", "web", or "resume"
-  // Example for a website project:
-  {
-    id: "web1",
-    img: "images/folio/web1.PNG",
-    alt: "web1",
-    title: "Website Work",
-    modal: "#myModalweb1",
-    type: "web",
-    style: { left: "0px", top: "0px" },
-    viewClass: "view view-first photography",
-  },
-  // Example for resume:
-  {
-    id: "my-resume",
-    img: "images/folio/resume.jpg",
-    alt: "resume",
-    title: "Know Me More",
-    modal: "",
-    type: "resume",
-    style: { left: "0px", top: "0px" },
-    viewClass: "view view-second commercial",
-    download: true,
-    downloadLink: "resume.pdf",
-  },
-  // ...add all other items
-];
-
-const Portfolio = () => {
-  const [activeFilter, setActiveFilter] = useState("graphic");
-
-  // Filter items based on activeFilter
-  const filteredItems =
-    activeFilter === "graphic"
-      ? portfolioItems.filter((item) => item.type === "graphic")
-      : activeFilter === "web"
-      ? portfolioItems.filter((item) => item.type === "web")
-      : portfolioItems.filter((item) => item.type === "resume");
-
-  return (
-    <div id="portfolio" className="selected">
-      <div className="title-container">
-        <div className="shadow-img"></div>
-        <h2 className="rotate-out">
-          Portfolio <span className="invert">Works</span>
-        </h2>
-      </div>
-      <div className="sec-porfolio description">
-        <div className="abs-child">
-          <ul className="button-group filters-button-group">
-            {filters.map((btn) => (
-              <li
-                key={btn.key}
-                className={`button${activeFilter === btn.key ? " is-checked" : ""}`}
-                onClick={() => setActiveFilter(btn.key)}
-              >
-                {btn.label}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="row">
-          <div className="folio-container">
-            <ul className="folio-item" style={{ position: "relative" }}>
-              {filteredItems.map((item) => (
-                <li
-                  key={item.id}
-                  className={item.viewClass}
-                  style={item.style}
-                  id={item.id}
-                >
-                  <img src={item.img} alt={item.alt} />
-                  <div className="mask">
-                    <h2>{item.title}</h2>
-                    {item.download ? (
-                      <a
-                        role="button"
-                        className="info"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href={item.downloadLink}
-                      >
-                        Download
-                      </a>
-                    ) : (
-                      <a
-                        role="button"
-                        className="info"
-                        data-toggle="modal"
-                        data-target={item.modal}
-                      >
-                        Read More
-                      </a>
-                    )}
-                  </div>
-                </li>
-              ))}
-            </ul>
+// 2. Modal 组件
+function PortfolioModal({ item, onClose }) {
+  if (!item) return null;
+  return ReactDOM.createPortal(
+    <div className="modal fade show" style={{display: "block",}} tabIndex="-1" role="dialog" aria-modal="true">
+      <div className="modal-dialog">
+        <div className="modal-content">
+          <div className="modal-header">
+            <button type="button" className="close" onClick={onClose} aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 className="modal-title">{item.maskTitle}</h4>
+          </div>
+          <div className="modal-body">
+            <img src={item.img} className="img-responsive" alt="modal-image" />
+          </div>
+          <div className="modal-footer">
+            <div className="mf-content">
+              <ul>
+                {item.desc.map((d, i) => <li key={i}>{d}</li>)}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      {/* 遮罩层，点击关闭 */}
+      <div className="modal-backdrop fade show" onClick={onClose} style={{
+       
+      }}></div>
+    </div>,
+    document.body
+  );
+}
+
+// 3. 主组件
+const Portfolio = () => {
+  const [modalItem, setModalItem] = useState(null);
+
+  return (
+    <li id="portfolio" className="selected">
+      <div className="title-container">
+        <div className="shadow-img"></div>
+        <h2 className="rotate-out rotated">
+          <span className="invert">Portfolio Of</span> Yuqi Sui
+        </h2>
+      </div>
+      <div className="description">
+        <div className="portfolio-grid" style={{display: "flex", gap: "20px", flexWrap: "wrap"}}>
+          {portfolioData.map(item => (
+            <div
+              key={item.id}
+              className="view view-first photography"
+              style={{width: "32.5%", height: "150px", position: "relative", cursor: "pointer"}}
+            >
+              <img
+                src={process.env.PUBLIC_URL + item.img}
+                alt={item.title}
+                style={{backgroundSize: "contain", margin: "0 auto", width: "100%", height: "100%"}}
+              />
+              <div className="mask" style={{
+                position: "absolute", top: 0, left: 0, width: "100%", height: "100%",
+                background: "rgba(12,19,27,0.6)", opacity: 0, transition: "opacity 0.4s"
+              }}>
+                <h2 style={{color: "#fff", marginTop: "30px"}}>{item.maskTitle}</h2>
+                <a
+                  role="button"
+                  className="info"
+                  style={{display: "inline-block", marginTop: "10px", background: "#000", color: "#fff", padding: "7px 14px"}}
+                  onClick={() => setModalItem(item)}
+                >
+                  Read More
+                </a>
+              </div>
+              {/* mask hover效果 */}
+              <style>
+                {`
+                  .view:hover .mask { opacity: 1 !important; }
+                  .view .mask { opacity: 0; }
+                `}
+              </style>
+            </div>
+          ))}
+        </div>
+        {modalItem && <PortfolioModal item={modalItem} onClose={() => setModalItem(null)} />}
+      </div>
+    </li>
   );
 };
 
