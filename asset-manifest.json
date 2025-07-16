@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/yuqi-portfolio/static/css/main.1cf28559.css",
+    "main.css": "/yuqi-portfolio/static/css/main.6d723118.css",
     "main.js": "/yuqi-portfolio/static/js/main.feda6036.js",
     "static/js/453.1a24dbd7.chunk.js": "/yuqi-portfolio/static/js/453.1a24dbd7.chunk.js",
     "index.html": "/yuqi-portfolio/index.html",
-    "main.1cf28559.css.map": "/yuqi-portfolio/static/css/main.1cf28559.css.map",
+    "main.6d723118.css.map": "/yuqi-portfolio/static/css/main.6d723118.css.map",
     "main.feda6036.js.map": "/yuqi-portfolio/static/js/main.feda6036.js.map",
     "453.1a24dbd7.chunk.js.map": "/yuqi-portfolio/static/js/453.1a24dbd7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1cf28559.css",
+    "static/css/main.6d723118.css",
     "static/js/main.feda6036.js"
   ]
 }
