@@ -1,13 +1,76 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "./portfolio.css";
-// 1. 数据结构
+// 1. data
 const portfolioData = [
+  {
+    id: "web1",
+    title: "A basic website for PY students to run their star-up company.",
+    img: "/folio/web1.png",
+    maskTitle: "Website Works",
+    desc: [
+      "Basic Front-End development",
+      <span key="link">Link: <a target="_blank" rel="noopener noreferrer" href="https://yuqisui.bitbucket.io/alladin/">Demo</a></span>
+    ]
+  },
+  {
+    id: "web2",
+    title: "Your personal bookkeeper, record all your transcation details.",
+    img: "/folio/web2.png",
+    maskTitle: "Website Works",
+    desc: [
+      "An Angular web mobile app project, all the data were stored in firebase.",
+      "Angular, typescript, Javascript.",
+      "Feel free to register your own account and enjoy.",
+      <span key="link">Link: <a target="_blank" rel="noopener noreferrer" href="https://sy7777.github.io/CountMoney/#/register">Demo</a></span>
+    ]
+  },
+  {
+    id: "web3",
+    title: "A display page of Github for all ITers who can search information by users and repository.",
+    img: "/folio/web3.png",
+    maskTitle: "Website Works",
+    desc: [
+      "Angular framework",
+      <span key="link">Link: <a target="_blank" rel="noopener noreferrer" href="https://github.com/sy7777/angular_searchGit">Demo</a></span>
+    ]
+  },
+  {
+    id: "web4",
+    title: "Commercial Website for small business.",
+    img: "/folio/web4.png",
+    maskTitle: "Website Works",
+    desc: [
+      "Wordpress website",
+      <span key="link">Link: <a target="_blank" rel="noopener noreferrer" href="https://www.tiptoedancewear.com.au/">Demo</a></span>
+    ]
+  },
+  {
+    id: "web5",
+    title: "A low code platform for those people without tech knowlege, they can create the form as they like.",
+    img: "/folio/web5.png",
+    maskTitle: "Website Works",
+    desc: [
+      "Build Soil Data Broker Program website to collect data for WA government using Vue, JavaScript, TypeScript, HTML, CSS, Laravel, Azure DevOps and serverless function.",
+      "Build online Form Creator (Kind of like a low code development platform) using Vue, Bootstrap, Vuex, Cloudflare, CI/CD Graphql, TypeOrm.",
+      <span key="link">Link: <a target="_blank" rel="noopener noreferrer" href="https://resources.axisstream.co">Demo</a></span>
+    ]
+  },
+    {
+    id: "web6",
+    title: "Your personal to do list, record all your tasks.",
+    img: "/folio/web6.png",
+    maskTitle: "Website Works",
+    desc: [
+      "JavaScript, all the data were stored in Localstorage.",
+      <span key="link">Link: <a target="_blank" rel="noopener noreferrer" href="https://yuqisui.bitbucket.io/todolist">Demo</a></span>
+    ]
+  },
   {
     id: "web7",
     title: "Classical Snake Game",
     img: "/folio/web7.png",
-    maskTitle: "Design Works",
+    maskTitle: "Website Works",
     desc: [
       "Bring you to the childhood",
       <span key="link">Link: <a target="_blank" rel="noopener noreferrer" href="https://yuqisui.bitbucket.io/Snake">Play</a></span>
@@ -17,7 +80,7 @@ const portfolioData = [
     id: "web8",
     title: "McDonald's Track Portal",
     img: "/folio/web8.png",
-    maskTitle: "Design Works",
+    maskTitle: "Website Works",
     desc: [
       "Web Design: HTML, CSS",
       <span key="link">Link: <a target="_blank" rel="noopener noreferrer" href="https://madtrackportal.azurewebsites.net/">Link</a></span>
@@ -27,7 +90,7 @@ const portfolioData = [
     id: "web9",
     title: "LBL Charity",
     img: "/folio/web9.png",
-    maskTitle: "Design Works",
+    maskTitle: "Website Works",
     desc: [
       "Official website of LBL Charity",
       "Made by Wordpress.",
@@ -38,14 +101,17 @@ const portfolioData = [
 
 // 2. Modal
 function PortfolioModal({ item, onClose }) {
-  if (!item) return null;
+  if (!item) {
+    console.log(item, "item is null");
+    return null
+  };
   return ReactDOM.createPortal(
     <>
       {/* overlay */}
-      <div className="modal-backdrop fade show" onClick={onClose}></div>
+      <div className="modal-backdrop fade show" onClick={onClose}>ggggggggg</div>
 
       {/* modal */}
-      <div className="modal" tabIndex="-1" role="dialog" aria-modal="true">
+      <div className="modal" tabIndex="-1" role="dialog" aria-modal="true" onClick={(e) => e.stopPropagation()}>
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
@@ -55,11 +121,12 @@ function PortfolioModal({ item, onClose }) {
               </button>
             </div>
             <div className="modal-body">
-              <img src={item.img} className="img-responsive" alt="modal-image" />
+              <img src={process.env.PUBLIC_URL + item.img} className="img-responsive" alt="modal-image" />
             </div>
             <div className="modal-footer">
               <div className="mf-content">
                 <ul>
+                  {item.title}
                   {item.desc.map((d, i) => <li key={i}>{d}</li>)}
                 </ul>
               </div>
@@ -86,12 +153,12 @@ const Portfolio = () => {
         </h2>
       </div>
       <div className="description">
-        <div className="portfolio-grid" style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
+        <div className="portfolio-grid" style={{}}>
           {portfolioData.map(item => (
             <div
               key={item.id}
               className="view view-first photography"
-              style={{ width: "32.5%", height: "150px", position: "relative", cursor: "pointer" }}
+              style={{ width: "30%", height: "150px", position: "relative", cursor: "pointer" }}
             >
               <img
                 src={process.env.PUBLIC_URL + item.img}

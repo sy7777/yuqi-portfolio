@@ -166,46 +166,50 @@ const tabData = [
         <ul className="employment-class tab-cont">
           <li>
             <h4>
-              Web Developer <span className="year">2023.03 - Now</span>
+              Web Developer <span className="year">2023 - Present</span>
             </h4>
             <h5>TPG Telecom</h5>
+            <p>Built flexible and reusable Drupal CMS templates to streamline internal content production workflows across multiple brands (Vodafone, TPG, iiNet, Internode).</p>
             <p>
-              Build Soil Data Broker Program website to collect data for WA government
-              using Vue, JavaScript, TypeScript, HTML, CSS, Laravel, Azure DevOps and
-              serverless function.
+              Worked closely with product managers, designers, and stakeholders to deliver efficient frontend tooling for content and localization teams.
             </p>
-            <p>
-              Build online Form Creator (Kind of like a low-code development platform)
-              using Vue, Bootstrap, Vuex, Cloudflare, CI/CD，Graphql, TypeOrm.
-            </p>
+            <p>Evaluated and implemented multiple JavaScript-based solutions for feature delivery, using A/B testing to determine optimal performance and UX.</p>
+            <p>Contributed to accessibility compliance and frontend performance optimization across brand websites.</p>
+            <p>Provided ongoing debugging, testing, and cross-browser compatibility support in a high-traffic production environment.</p>
           </li>
           <li>
             <h4>
-              Front end developer <span className="year">2022.05 - 2023.03</span>
+              Front end developer <span className="year">2022 - 2023</span>
             </h4>
             <h5>Axis Tech</h5>
             <p>
-              Build Soil Data Broker Program website to collect data for WA government
-              using Vue, JavaScript, TypeScript, HTML, CSS, Laravel, Azure DevOps and
-              serverless function.
+              Developed a low-code form builder platform using Vue.js, Vuex, Node.js, Bootstrap, and TypeORM.
             </p>
             <p>
-              Build online Form Creator (Kind of like a low-code development platform)
-              using Vue, Bootstrap, Vuex, Cloudflare, CI/CD，Graphql, TypeOrm.
+              Designed and implemented GraphQL APIs to power efficient data queries and mutations.
+            </p>
+            <p>
+            	Deployed production-ready systems using Cloudflare and CI/CD pipelines.
+            </p>
+            <p>
+              Performed database modeling and management using TypeORM, ensuring efficient queries and a well-structured data model.
+            </p>
+            <p>
+              Collaborated with internal and external stakeholders to continuously improve UX based on feedback and data insights.
             </p>
           </li>
           <li>
             <h4>
-              Developer Programmer<span className="year">2021.11 – 2022.04</span>
+              Developer Programmer<span className="year">2021 – 2022</span>
             </h4>
             <h5>Parallel Data Research</h5>
-            <p>Front-end work of the McDonald's website</p>
+            <p>Built and maintained the McDonald’s Ad Tracker web portal with JavaScript, HTML, and CSS.</p>
             <p>Maintain the website for daily requirement</p>
-            <p>Maintain Azure database and server.</p>
+            <p>Designed custom survey systems using Decipher and Python for market research clients.</p>
           </li>
           <li>
             <h4>
-              Web Developer Intern <span className="year">2021.09 - 2021.10</span>
+              Web Developer Intern <span className="year">2021 - 2021</span>
             </h4>
             <h5>ACESO</h5>
             <p>Angular, Putty, Node.Js, Database, Core UI, Git, </p>

@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import AboutMe from "../about-me/aboutMe";
 import Resume from "../resume/resume";
 import Portfolio from "../portfolio/portfolio";
+import Contact from "../contact/contact";
 import "./home.css";
 
 const Home = () => {
-  const [activePage, setActivePage] = useState("home"); 
+  const [activePage, setActivePage] = useState("home");
 
   const handleMenuClick = (page) => {
     setActivePage(page); // 更新当前显示的页面
@@ -19,7 +20,7 @@ const Home = () => {
           <div id="namecard" className="namecard">
             <div className="shadow-img"></div>
             <h1 className="maintitle">Yuqi <span className="invert"></span></h1>
-            <h3 className="invert sub-maintitle">Web/UI <span className="rotate">Developer, Designer</span></h3>
+            <h3 className="invert sub-maintitle">Web <span className="rotate">Developer/ Designer</span></h3>
             <img id="profile-img" className="profile-img transparent" src={process.env.PUBLIC_URL + "/myPhoto.png"} alt="profile-image" />
           </div>
           {/* Menu */}
@@ -37,6 +38,10 @@ const Home = () => {
                 <div className="hover-background"></div>
                 <span>Portfolio</span><i className="fa fa-suitcase fa-fw"></i>
               </li>
+              <li className={`nav-btn ${activePage === "contact" ? "selected" : ""}`} onClick={() => handleMenuClick("contact")}>
+                <div className="hover-background"></div>
+                <span>Contact</span><i className="fa fa-plane fa-fw"></i>
+              </li>
             </ul>
             <div className="social-menu-container">
               <ul className="social-menu no-padding">
@@ -51,6 +56,7 @@ const Home = () => {
             {activePage === "home" && <AboutMe />}
             {activePage === "resume" && <Resume />}
             {activePage === "portfolio" && <Portfolio />}
+            {activePage === "contact" && <Contact />}
           </ul>
         </div>
       </div>

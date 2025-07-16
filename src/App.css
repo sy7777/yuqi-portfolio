@@ -430,7 +430,6 @@ span.year {
 	overflow: hidden;
 	background-color: #fff;
 	border: 7px solid rgb(181, 218, 193);
-	z-index: 100;
 	opacity: 1;
 	/* Modern!Firefox 0.9+, Safari 2?, Chrome any?Opera 9+, IE 9+ */
 	-khtml-opacity: 1;
@@ -593,7 +592,7 @@ ul.nav-menu li.selected span {
 	margin-bottom: 15px;
 	padding: 15px;
 	padding-left: 25px;
-	z-index: 100;
+	z-index: 10;
 	display: flex;
 	align-items: center;
 }
