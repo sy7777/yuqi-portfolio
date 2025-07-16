@@ -189,7 +189,7 @@ const tabData = [
               Designed and implemented GraphQL APIs to power efficient data queries and mutations.
             </p>
             <p>
-            	Deployed production-ready systems using Cloudflare and CI/CD pipelines.
+              Deployed production-ready systems using Cloudflare and CI/CD pipelines.
             </p>
             <p>
               Performed database modeling and management using TypeORM, ensuring efficient queries and a well-structured data model.
@@ -228,6 +228,28 @@ const tabData = [
       <div>
         <h3 className="title">EDUCATIONS</h3>
         <EducationList />
+      </div>
+    )
+  },
+  {
+    id: "tab-download",
+    label: "Download",
+    icon: "icon-download",
+    bg: `/resume/skill.png`,
+    content: (
+      <div style={{padding: `15px 30px;`}}>
+        <h3 className="title">Hire me</h3>
+        <div>
+          <li class="view view-second commercial" id="my-resume">
+            <img src={process.env.PUBLIC_URL + '/hireme.png'} alt="11" />
+            <div class="mask"></div>
+            <div class="content">
+              <h2>Know Me More</h2>
+              <a role="button" class="info" target="_blank" rel="noopener noreferrer"
+                href={process.env.PUBLIC_URL + '/Yuqi_Sui_resume.pdf'}>Download</a>
+            </div>
+          </li>
+        </div>
       </div>
     )
   },
