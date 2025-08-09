@@ -158,7 +158,6 @@ const Portfolio = () => {
             <div
               key={item.id}
               className="view view-first photography"
-              style={{ width: "30%", height: "150px", position: "relative", cursor: "pointer" }}
             >
               <img
                 src={process.env.PUBLIC_URL + item.img}

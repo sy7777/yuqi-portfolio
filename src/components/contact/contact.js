@@ -5,7 +5,7 @@ const Contact = () => {
     <li id="contact" className="selected">
       <div className="title-container">
         <div className="shadow-img"></div>
-        <h2 className="rotate-out">Welcome To <span className="invert">My Profile</span></h2>
+        <h2 className="rotate-out">Welcome To <span className="invert">Contact me</span></h2>
       </div>
       <div className="description">
         <div className="container-padding">
